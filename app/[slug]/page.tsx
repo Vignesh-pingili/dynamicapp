@@ -1,12 +1,11 @@
 import data from "../lib/data.json"
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
 type Props = {
   params: Promise<any>
 }
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const path = await params
   const title = await data.website.routes.find(ele => ele.path == "/" + path?.slug)?.meta.title || "";
